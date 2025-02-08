@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSLG Voting System 2025-2026</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #007bff;
+        }
+        select, button {
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #votingForm, #voteConfirmation, #resultsPage {
+            display: none;
+        }
+        .winner {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .candidate-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+        .logo {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="school-logo.png" alt="School Logo" class="logo">
+        <img src="sslg-logo.png" alt="SSLG Logo" class="logo">
+        <h1>SSLG Voting System 2025-2026</h1>
+        
+        <div id="studentSelection">
+            <h2>Welcome! Please Select Your Name</h2>
+            <select id="studentName">
+                <option value="">--Select your name--</option>
+                <option value="Alice">Alice</option>
+                <option value="Bob">Bob</option>
+                <option value="Charlie">Charlie</option>
+                <option value="Diana">Diana</option>
+                <option value="Eve">Eve</option>
+                <option value="Frank">Frank</option>
+            </select>
+            <button onclick="startVoting()">Start Voting</button>
+        </div>
+
+        <div id="votingForm">
+            <h2>Cast Your Vote</h2>
+            <p>Vote for your preferred candidates.</p>
+            
+            <h3>President</h3>
+            <img src="candidate1.jpg" alt="Candidate 1" class="candidate-img">
+            <p>SONVINJE KHAN CRISTOBAL ANTANAREZ</p>
+            <img src="candidate2.jpg" alt="Candidate 2" class="candidate-img">
+            <p>BRIDGETTE PASTRANA</p>
+            
+            <h3>Vice President</h3>
+            <img src="candidate3.jpg" alt="Candidate 3" class="candidate-img">
+            <p>ARJAY MACALALAD CEREZO</p>
+            <img src="candidate4.jpg" alt="Candidate 4" class="candidate-img">
+            <p>JENREY ROBISO</p>
+            
+            <h3>Secretary</h3>
+            <img src="candidate5.jpg" alt="Candidate 5" class="candidate-img">
+            <p>KIM ASHLEE SAN JUAN GALAY</p>
+            <img src="candidate6.jpg" alt="Candidate 6" class="candidate-img">
+            <p>SAIRENE GUEVARRA</p>
+            
+            <h3>Treasurer</h3>
+            <img src="candidate7.jpg" alt="Candidate 7" class="candidate-img">
+            <p>PIA ALLYSA BUENSALIDA</p>
+            <img src="candidate8.jpg" alt="Candidate 8" class="candidate-img">
+            <p>MARIEL SAN JUAN LACATAN</p>
+            
+            <h3>Auditor</h3>
+            <img src="candidate9.jpg" alt="Candidate 9" class="candidate-img">
+            <p>CRISTINE GUEVARRA</p>
+            <img src="candidate10.jpg" alt="Candidate 10" class="candidate-img">
+            <p>LEO SAEL SANTOYO</p>
+            
+            <h3>Grade 8 Representative</h3>
+            <img src="candidate11.jpg" alt="Candidate 11" class="candidate-img">
+            <p>EZHAN LAINE PANAG BARANGCO</p>
+            <img src="candidate12.jpg" alt="Candidate 12" class="candidate-img">
+            <p>ZHAINE L. MARAMOT</p>
+            
+            <h3>Grade 9 Representative</h3>
+            <img src="candidate13.jpg" alt="Candidate 13" class="candidate-img">
+            <p>CHRISTINE MAE MOJAR</p>
+            <img src="candidate14.jpg" alt="Candidate 14" class="candidate-img">
+            <p>RAYVER MACALALAD MONTIANO</p>
+            
+            <h3>Grade 10 Representative</h3>
+            <p>REGINE DELICA GUPIT</p>
+            <p>CYRUS JAMORAGAN</p>
+            <p>AHLLYZA JOYCE MENDOZA</p>
+            
+            <h3>Grade 11 Representative</h3>
+            <p>ZEDEKIAH YURI ELPOZAR</p>
+            <p>DEXTER FAILAMAN JAMORAGAN</p>
+            
+            <h3>Grade 12 Representative</h3>
+            <p>JOHN LORENCE CAGAPE</p>
+            <p>ROSEMAY CATIPON PANGANIBAN</p>
+            
+            <button onclick="submitVote()">Submit Vote</button>
+        </div>
+
+        <div id="voteConfirmation">
+            <h2>Thank you for voting!</h2>
+            <p>Your vote has been recorded.</p>
+            <button onclick="showResults()">View Results</button>
+        </div>
+
+        <div id="resultsPage">
+            <h2>SSLG Election Results</h2>
+            <div id="overallResults"></div>
+        </div>
+    </div>
+</body>
+</html>
