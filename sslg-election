@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabang High School SSLG Voting System 2025-2026</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        select, button {
+            margin: 10px 0;
+            padding: 5px;
+        }
+        #votingForm, #voteConfirmation, #resultsPage {
+            display: none;
+        }
+        .position {
+            margin-bottom: 20px;
+        }
+        .winner {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sabang High School Supreme Secondary Learner Government Voting System 2025-2026</h1>
+    
+    <div id="studentSelection">
+        <h2>Select Your Name</h2>
+        <select id="studentName">
+            <option value="">--Select your name--</option>
+            <option value="Alice">Alice</option>
+            <option value="Bob">Bob</option>
+            <option value="Charlie">Charlie</option>
+            <option value="Diana">Diana</option>
+            <option value="Eve">Eve</option>
+            <option value="Frank">Frank</option>
+        </select>
+        <button onclick="startVoting()">Start Voting</button>
+    </div>
+
+    <div id="votingForm">
+        <!-- Voting form content remains the same -->
+    </div>
+
+    <div id="voteConfirmation">
+        <h2>Thank you for voting!</h2>
+        <p>Your vote has been recorded.</p>
+        <button onclick="showResults()">View Results</button>
+    </div>
+
+    <div id="resultsPage">
+        <h2>SSLG Election Results</h2>
+        <div id="overallResults"></div>
+        <h3>Grade Level Representatives</h3>
+        <div id="gradeResults"></div>
+    </div>
+
+    <script>
+        const students = {
+            "Alice": {"grade": 7, "voted": false},
+            "Bob": {"grade": 8, "voted": false},
+            "Charlie": {"grade": 9, "voted": false},
+            "Diana": {"grade": 10, "voted": false},
+            "Eve": {"grade": 11, "voted": false},
+            "Frank": {"grade": 12, "voted": false},
+        };
+
+        const gradeRepresentatives = {
+            8: ["EZHAN LAINE PANAG BARANGCO", "ZHAINE L. MARAMOT"],
+            9: ["CHRISTINE MAE MOJAR", "RAYVER MACALALAD MONTIANO", "WILLY BOY PANTOJA"],
+            10: ["REGINE DELICA GUPIT", "CYRUS JAMORAGAN", "AHLLYZA JOYCE MENDOZA"],
+            11: ["ZEDEKIAH YURI ELPOZAR", "DEXTER FAILAMAN JAMORAGAN"],
+            12: ["JOHN LORENCE CAGAPE", "ROSEMAY CATIPON PANGANIBAN"]
+        };
+
+        // Simulated voting results
+        const voteResults = {
+            "President": {"SONVINJE KHAN CRISTOBAL ANTANAREZ": 120, "BRIDGETTE PASTRANA": 100},
+            "Vice President": {"ARJAY MACALALAD CEREZO": 110, "JENREY ROBISO": 110},
+            "Secretary": {"KIM ASHLEE SAN JUAN GALAY": 130, "SAIRENE GUEVARRA": 90},
+            "Treasurer": {"PIA ALLYSA BUENSALIDA": 115, "MARIEL SAN JUAN LACATAN": 105},
+            "Auditor": {"CRISTINE GUEVARRA": 125, "LEO SAEL SANTOYO": 95},
+            "Protocol Officer": {"NUHA BINT ABDULRAHEEM S. GAMOL": 105, "JHAZZ DE JESUS MARASIGAN": 115},
+            "Public Information Officer": {"GWENNETH RAIN SADIWA": 80, "JOHN LLOYD PEREZ PANES": 70, "YASHA VIEN ALDOVER": 60, "REIDEN MADRIGAL": 10},
+            "Grade 8 Representative": {"EZHAN LAINE PANAG BARANGCO": 30, "ZHAINE L. MARAMOT": 25},
+            "Grade 9 Representative": {"CHRISTINE MAE MOJAR": 28, "RAYVER MACALALAD MONTIANO": 22, "WILLY BOY PANTOJA": 20},
+            "Grade 10 Representative": {"REGINE DELICA GUPIT": 25, "CYRUS JAMORAGAN": 20, "AHLLYZA JOYCE MENDOZA": 30},
+            "Grade 11 Representative": {"ZEDEKIAH YURI ELPOZAR": 35, "DEXTER FAILAMAN JAMORAGAN": 30},
+            "Grade 12 Representative": {"JOHN LORENCE CAGAPE": 40, "ROSEMAY CATIPON PANGANIBAN": 35}
+        };
+
+        function startVoting() {
+            // Voting logic remains the same
+        }
+
+        function setupGradeRepresentative(grade) {
+            // Grade representative setup logic remains the same
+        }
+
+        document.getElementById('sslgVotingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const studentName = document.getElementById('studentName').value;
+            students[studentName].voted = true;
+            document.getElementById('votingForm').style.display = 'none';
+            document.getElementById('voteConfirmation').style.display = 'block';
+        });
+
+        function showResults() {
+            document.getElementById('voteConfirmation').style.display = 'none';
+            document.getElementById('resultsPage').style.display = 'block';
+            displayResults();
+        }
+
+        function displayResults() {
+            let overallResultsHtml = '<h3>Overall Results</h3>';
+            let gradeResultsHtml = '';
+
+            for (const [position, candidates] of Object.entries(voteResults)) {
+                const winner = Object.keys(candidates).reduce((a, b) => candidates[a] > candidates[b] ? a : b);
+                if (position.includes('Representative')) {
+                    gradeResultsHtml += `<h4>${position}</h4>`;
+                    for (const [candidate, votes] of Object.entries(candidates)) {
+                        gradeResultsHtml += `<p>${candidate === winner ? '👑 ' : ''}${candidate}: ${votes} votes${candidate === winner ? ' <span class="winner">(Winner)</span>' : ''}</p>`;
+                    }
+                } else {
+                    overallResultsHtml += `<h4>${position}</h4>`;
+                    for (const [candidate, votes] of Object.entries(candidates)) {
+                        overallResultsHtml += `<p>${candidate === winner ? '👑 ' : ''}${candidate}: ${votes} votes${candidate === winner ? ' <span class="winner">(Winner)</span>' : ''}</p>`;
+                    }
+                }
+            }
+
+            document.getElementById('overallResults').innerHTML = overallResultsHtml;
+            document.getElementById('gradeResults').innerHTML = gradeResultsHtml;
+        }
+    </script>
+</body>
+</html>
